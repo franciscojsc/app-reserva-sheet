@@ -1,0 +1,48 @@
+<html>
+
+<head>
+    <title>Reservas de salas</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.getJSON('https://api.sheety.co/2673e735-e781-4499-81ed-99c52ee0ea61', function (data) {
+                var template = Handlebars.compile($('#item-template').html())
+                $('#items').html(template(data))
+            })
+        })
+    </script>
+    <script id="item-template" type="text/x-handlebars-template">
+        
+            {{#each this}}
+                <div class="card text-center" style="width: 100%;">
+                    <img class="card-img-top" src="{{fotoDaSala}}" alt="Sala {{nomeDaSala}}">
+                    <div class="card-body">
+                    <h5 class="card-title">{{nomeDaSala}}</h5>
+                    <p class="card-text">{{descricao}}</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Reservado: {{reservada}}</li>
+                        <li class="list-group-item">Reservado por {{reservadaPor}}</li>
+                        <li class="list-group-item">Status: {{status}}</li>
+                    </ul>
+                </div>
+            {{/each}}
+        
+    </script>
+</head>
+
+<body>
+    <div id="items">Carregando reservas...</div>
+</body>
+
+</html>
