@@ -16,7 +16,12 @@
         </nav>
     </header>
 
-    <div id="items">Carregando reservas...</div>
+    <div class="album py-5">
+        <div class="container">
+            <h2 class="jumbotron-heading text-center mb-4">Salas</h2>
+            <div class="row" id="items">Carregando reservas...</div>
+        </div>
+    </div>
 
     <script type="text/javascript" src="assets/js/jquery.min.js"></script>
     <script type="text/javascript" src="assets/js/handlebars.min.js"></script>
@@ -24,11 +29,12 @@
     <script type="text/javascript" src="assets/js/script.js"></script>
     <script id="item-template" type="text/x-handlebars-template">
         {{#each this}}
-            <div class="card text-center" style="width: 100%;">
-                <img class="card-img-top" src="{{fotoDaSala}}" alt="Sala {{nomeDaSala}}">
+        <div class="col-md-6 col-sm-12">
+            <div class="card mb-4 box-shadow">
+                <img class="card-img-top" src="{{fotoDaSala}}" alt="Sala {{nomeDaSala}}" style="height: 250px; width: 100%; display: block;">
                 <div class="card-body">
-                <h5 class="card-title">{{nomeDaSala}}</h5>
-                <p class="card-text">{{descricao}}</p>
+                    <h5 class="card-title">{{nomeDaSala}}</h5>
+                    <p class="card-text">{{descricao}}</p>
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">Reservado: {{reservada}}</li>
@@ -36,6 +42,7 @@
                     <li class="list-group-item">Status: {{status}}</li>
                 </ul>
             </div>
+        </div>
         {{/each}}
     </script>
 </body>
